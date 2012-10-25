@@ -18,21 +18,30 @@ class Chef
       end
 
       def report
-        max_time = all_resources.max_by{ |r| r.elapsed_time}.elapsed_time
-        longest_resource_name = all_resources.max_by{ |r| full_name(r).length}
-        max_resource_length = full_name(longest_resource_name).length
-        Chef::Log.info "%-#{max_resource_length}s  Elapsed Time(%.2fs per unit)"%["Resource", max_time]
+        @max_time = all_resources.max_by{ |r| r.elapsed_time}.elapsed_time
+        @max_resource = all_resources.max_by{ |r| full_name(r).length}
+        Chef::Log.info "%-#{max_resource_length}s  %s"%["Resource", "Elapsed Time"]
         Chef::Log.info "%-#{max_resource_length}s  %s"%["========", "============"]
         all_resources.each do |r|
           char = if r.updated then "+" else "-" end
-          bar = char * ( @config[:max_width] * (r.elapsed_time/max_time))
+          bar = char * ( @config[:max_width] * (r.elapsed_time/@max_time))
           Chef::Log.info "%-#{max_resource_length}s  %s"%[full_name(r), bar]
         end
         Chef::Log.info ""
+        Chef::Log.info "Slowest Resource : #{full_name(@max_resource)} (%.6fs)"%[@max_time]
+        Chef::Log.info "Scale            : %.6fs per unit width"%[unit_width]
         Chef::Log.info " * '+' denotes a resource which updated this run"
         Chef::Log.info " * '-' denotes a resource which did not update this run"
       end
 
+    end
+
+    def unit_width
+      @max_time/@config[:max_width]
+    end
+
+    def max_resource_length
+      full_name(@max_resource).length
     end
 
     def full_name(resource)
