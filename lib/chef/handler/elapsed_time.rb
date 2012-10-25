@@ -6,12 +6,12 @@
 # License:: Apache2
 #
 
-BAR_MAXLEN=30
 
 class Chef
   class Handler
     class ElapsedTime < Chef::Handler
-      VERSION = '0.1.0'
+      BAR_MAXLEN = 30
+      VERSION = '0.1.1'
 
       def report
         max_time = all_resources.max_by{ |r| r.elapsed_time}.elapsed_time
