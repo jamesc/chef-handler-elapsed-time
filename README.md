@@ -49,25 +49,29 @@ Example:
     $ chef-client
     ...
     ...
-    [2012-10-25T18:48:04+00:00] INFO: Running report handlers
-    [2012-10-25T18:48:04+00:00] INFO: Resource                                            Elapsed Time(0.08s per unit)
-    [2012-10-25T18:48:04+00:00] INFO: ========                                            ============
-    [2012-10-25T18:48:04+00:00] INFO: remote_directory[/srv/chef/handlers]
-    [2012-10-25T18:48:04+00:00] INFO: cookbook_file[/srv/chef/handlers/chef_profiler.rb]  ++++++++++++++++++++++++++++++
-    [2012-10-25T18:48:04+00:00] INFO: chef_handler[Chef::Handler::Profiler]               +
-    [2012-10-25T18:48:04+00:00] INFO: package[ntp]                                        ------
-    [2012-10-25T18:48:04+00:00] INFO: package[ntpdate]                                    ------
-    [2012-10-25T18:48:04+00:00] INFO: directory[/var/lib/ntp]
-    [2012-10-25T18:48:04+00:00] INFO: directory[/var/log/ntpstats/]
-    [2012-10-25T18:48:04+00:00] INFO: service[ntp]                                        ---------
-    [2012-10-25T18:48:04+00:00] INFO: template[/etc/ntp.conf]                             -
-    [2012-10-25T18:48:04+00:00] INFO: execute[apt-get-update]
-    [2012-10-25T18:48:04+00:00] INFO: execute[apt-get update]
-    [2012-10-25T18:48:04+00:00] INFO: package[update-notifier-common]                     ------
-    [2012-10-25T18:48:04+00:00] INFO: execute[apt-get-update-periodic]
-    [2012-10-25T18:48:04+00:00] INFO: directory[/var/cache/local]
-    [2012-10-25T18:48:04+00:00] INFO: directory[/var/cache/local/preseeding]
-    [2012-10-25T18:48:04+00:00] INFO: Report handlers complete
+    [2012-10-25T21:41:10+00:00] INFO: Chef Run complete in 5.067115612 seconds
+    [2012-10-25T21:41:10+00:00] INFO: Running report handlers
+    [2012-10-25T21:41:10+00:00] INFO: Resource                                  Elapsed Time(0.02s per unit)
+    [2012-10-25T21:41:10+00:00] INFO: ========                                  ============
+    [2012-10-25T21:41:10+00:00] INFO: remote_directory[/srv/chef/handlers]      -
+    [2012-10-25T21:41:10+00:00] INFO: chef_gem[chef-handler-elapsed-time]
+    [2012-10-25T21:41:10+00:00] INFO: chef_handler[Chef::Handler::ElapsedTime]
+    [2012-10-25T21:41:10+00:00] INFO: package[ntp]                              -------------------
+    [2012-10-25T21:41:10+00:00] INFO: package[ntpdate]                          -------------------
+    [2012-10-25T21:41:10+00:00] INFO: directory[/var/lib/ntp]                   -
+    [2012-10-25T21:41:10+00:00] INFO: directory[/var/log/ntpstats/]             -
+    [2012-10-25T21:41:10+00:00] INFO: service[ntp]                              ------------------------------
+    [2012-10-25T21:41:10+00:00] INFO: template[/etc/ntp.conf]                   -----
+    [2012-10-25T21:41:10+00:00] INFO: execute[apt-get-update]
+    [2012-10-25T21:41:10+00:00] INFO: execute[apt-get update]
+    [2012-10-25T21:41:10+00:00] INFO: package[update-notifier-common]           -------------------
+    [2012-10-25T21:41:10+00:00] INFO: execute[apt-get-update-periodic]
+    [2012-10-25T21:41:10+00:00] INFO: directory[/var/cache/local]               -
+    [2012-10-25T21:41:10+00:00] INFO: directory[/var/cache/local/preseeding]    -
+    [2012-10-25T21:41:10+00:00] INFO:
+    [2012-10-25T21:41:10+00:00] INFO:  * '+' denotes a resource which updated this run
+    [2012-10-25T21:41:10+00:00] INFO:  * '-' denotes a resource which did not update this run
+    [2012-10-25T21:41:10+00:00] INFO: Report handlers complete
 
 Licence
 =======
