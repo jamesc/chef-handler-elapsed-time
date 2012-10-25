@@ -10,8 +10,12 @@
 class Chef
   class Handler
     class ElapsedTime < Chef::Handler
-      BAR_MAXLEN = 30
-      VERSION = '0.1.1'
+
+      def initialize(config={})
+        @config = config
+        @config[:max_width] ||= 30
+        @config
+      end
 
       def report
         max_time = all_resources.max_by{ |r| r.elapsed_time}.elapsed_time
@@ -21,9 +25,12 @@ class Chef
         Chef::Log.info "%-#{max_resource_length}s  %s"%["========", "============"]
         all_resources.each do |r|
           char = if r.updated then "+" else "-" end
-          bar = char * ( BAR_MAXLEN * (r.elapsed_time/max_time))
+          bar = char * ( @config[:max_width] * (r.elapsed_time/max_time))
           Chef::Log.info "%-#{max_resource_length}s  %s"%[full_name(r), bar]
         end
+        Chef::Log.info ""
+        Chef::Log.info " * '+' denotes a resource which updated this run"
+        Chef::Log.info " * '-' denotes a resource which did not update this run"
       end
 
     end

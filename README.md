@@ -30,6 +30,20 @@ Create a recipe with the following:
       action :nothing
     end.run_action(:enable)
 
+### Options
+
+You can pass an argument of `max_width` to the handler to define the
+maximum width the bar can be in order to fit onto your screen if
+required.
+
+Example:
+
+    chef_handler "Chef::Handler::ElapsedTime" do
+      source "chef/handler/elapsed_time"
+      action :nothing
+      arguments :max_width => 10  # narrow bar
+    end.run_action(:enable)
+
 ### Example output
 
     $ chef-client
