@@ -22,7 +22,7 @@ Create a recipe with the following:
 
     # load the gem here so it gets added to the $LOAD_PATH, otherwise chef_handler
     # will fail.
-    require 'chef/handler/chef_elapsed_time'
+    require 'chef/handler/elapsed_time'
 
     # Activate the handler immediately during compile phase
     chef_handler "Chef::Handler::ElapsedTime" do
