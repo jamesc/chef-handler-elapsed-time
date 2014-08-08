@@ -24,7 +24,7 @@ class Chef
         Chef::Log.info "%-#{max_resource_length}s  %s"%["========", "============"]
         all_resources.each do |r|
           char = if r.updated then "+" else "-" end
-          bar = char * ( @config[:max_width] * (r.elapsed_time/@max_time))
+          bar = "#{char} " + char * ( @config[:max_width] * (r.elapsed_time/@max_time))
           Chef::Log.info "%-#{max_resource_length}s  %s"%[full_name(r), bar]
         end
         Chef::Log.info ""
