@@ -20,11 +20,11 @@ class Chef
       def report
         @max_time = all_resources.max_by{ |r| r.elapsed_time}.elapsed_time
         @max_resource = all_resources.max_by{ |r| full_name(r).length}
-        Chef::Log.info "%-#{max_resource_length}s  %s"%["Resource", "Elapsed Time"]
-        Chef::Log.info "%-#{max_resource_length}s  %s"%["========", "============"]
+        Chef::Log.info "%-#{max_resource_length}s  %s"%["Resource", "  Elapsed Time"]
+        Chef::Log.info "%-#{max_resource_length}s  %s"%["========", "  ============"]
         all_resources.each do |r|
           char = if r.updated then "+" else "-" end
-          bar = char * ( @config[:max_width] * (r.elapsed_time/@max_time))
+          bar = "#{char} " + char * ( @config[:max_width] * (r.elapsed_time/@max_time))
           Chef::Log.info "%-#{max_resource_length}s  %s"%[full_name(r), bar]
         end
         Chef::Log.info ""
